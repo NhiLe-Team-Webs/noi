@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, Target, Shield, Check, Calendar, BookOpen, Users, Menu, X, Bell, Facebook, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -59,16 +61,21 @@ const Landing = () => {
             N ơi<span className="text-primary">!</span>
           </a>
           <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#mission" className="text-gray-600 hover:text-primary transition-colors">Sứ Mệnh</a>
-            <a href="#community" className="text-gray-600 hover:text-primary transition-colors">Cộng Đồng</a>
-            <a href="#nam" className="text-gray-600 hover:text-primary transition-colors">NAM</a>
-            <a href="#events" className="text-gray-600 hover:text-primary transition-colors">Hoạt Động</a>
-            <Button 
-              onClick={openJoinModal} 
-              className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition-transform hover:scale-105 shadow-md"
-            >
-              Gia Nhập Ngay
-            </Button>
+            <Link to="mission" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Sứ Mệnh</Link>
+            <Link to="community" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Cộng Đồng</Link>
+            <Link to="nam" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">NAM</Link>
+            <Link to="events" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Hoạt Động</Link>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                onClick={openJoinModal} 
+                className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition-transform hover:scale-105 shadow-md"
+              >
+                Gia Nhập Ngay
+              </Button>
+            </motion.div>
+
+            
           </nav>
           <button className="md:hidden text-gray-700" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -78,16 +85,19 @@ const Landing = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden px-6 pb-4">
-            <a href="#mission" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Sứ Mệnh</a>
-            <a href="#community" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Cộng Đồng</a>
-            <a href="#nam" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>NAM</a>
-            <a href="#events" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Hoạt Động</a>
+            <Link to="mission" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Sứ Mệnh</Link>
+            <Link to="community" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Cộng Đồng</Link>
+            <Link to="nam" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>NAM</Link>
+            <Link to="events" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Hoạt Động</Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button 
               onClick={openJoinModal} 
               className="block mt-4 w-full bg-primary text-white text-center px-5 py-2 rounded-lg hover:bg-primary/90 shadow-md"
             >
               Gia Nhập Ngay
             </Button>
+            </motion.div>
+
           </div>
         )}
       </header>
@@ -95,7 +105,12 @@ const Landing = () => {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section className="relative pt-20 pb-24 md:pt-32 md:pb-36 text-center bg-white">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="relative pt-20 pb-24 md:pt-32 md:pb-36 text-center bg-white">
           <div className="absolute inset-0 bottom-1/4 bg-hero-gradient"></div>
           <div className="container mx-auto px-6 relative">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
@@ -107,24 +122,38 @@ const Landing = () => {
               Chào mừng bạn đến với N ơi! - Cộng đồng mở dành cho những người khao khát phát triển bản thân, kết nối và cống hiến dựa trên giá trị cốt lõi: Tâm - Tầm - Đức.
             </p>
             <div className="mt-10 flex justify-center gap-4 flex-wrap">
+
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={openJoinModal}
                 className="bg-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-transform hover:scale-105 shadow-lg"
               >
                 Tham Gia Cộng Đồng
               </Button>
-              <Button 
-                variant="outline"
-                className="bg-white text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-transform hover:scale-105 shadow-lg border border-gray-300"
-              >
-                <a href="#mission">Tìm Hiểu Thêm</a>
-              </Button>
+              </motion.div>
+
+              <Link to="mission" smooth duration={600} offset={-80} className="cursor-pointer">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  variant="outline"
+                  className="bg-white text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-transform hover:scale-105 shadow-lg border border-gray-300"
+                >
+                  Tìm Hiểu Thêm
+                </Button>
+              </motion.div>
+            </Link>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Mission Section */}
-        <section id="mission" className="py-20 bg-gray-50">
+        <motion.section 
+          id="mission" 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-20 bg-gray-50">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Giá Trị Cốt Lõi</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
@@ -159,10 +188,16 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Community Section */}
-        <section id="community" className="py-20 bg-white">
+        <motion.section 
+          id="community"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -195,10 +230,16 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* NAM Section */}
-        <section id="nam" className="py-20 bg-gray-800 text-white">
+        <motion.section 
+          id="nam"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-20 bg-gray-800 text-white">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1">
@@ -224,10 +265,16 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Events Section */}
-        <section id="events" className="py-20 bg-gray-50">
+        <motion.section 
+          id="events"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-20 bg-gray-50">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Hoạt Động & Sự Kiện</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
@@ -265,28 +312,40 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA */}
-        <section className="bg-primary">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="bg-primary">
           <div className="container mx-auto px-6 py-20 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Sẵn sàng để bắt đầu hành trình của bạn?</h2>
             <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">
               Hãy trở thành một phần của cộng đồng N, nơi bạn được là chính mình, được học hỏi và được cống hiến.
             </p>
             <div className="mt-8">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={openJoinModal}
                 className="bg-white text-primary px-10 py-4 rounded-lg text-xl font-bold hover:bg-blue-50 transition-transform hover:scale-105 shadow-2xl"
               >
                 Gia Nhập N Ngay!
               </Button>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Connect Section */}
-        <section className="py-20 bg-white">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-20 bg-white">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Kết Nối & Đồng Hành</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
@@ -333,7 +392,7 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* Footer */}
@@ -350,10 +409,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-200">Khám Phá</h4>
               <ul className="mt-4 space-y-2">
-                <li><a href="#mission" className="text-gray-400 hover:text-white transition-colors">Sứ Mệnh</a></li>
-                <li><a href="#community" className="text-gray-400 hover:text-white transition-colors">Về Cộng Đồng</a></li>
-                <li><a href="#nam" className="text-gray-400 hover:text-white transition-colors">Cộng Đồng NAM</a></li>
-                <li><a href="#events" className="text-gray-400 hover:text-white transition-colors">Sự Kiện</a></li>
+                <li><Link to="mission" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Sứ Mệnh</Link></li>
+                <li><Link to="community" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Về Cộng Đồng</Link></li>
+                <li><Link to="nam" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Cộng Đồng NAM</Link></li>
+                <li><Link to="events" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Sự Kiện</Link></li>
               </ul>
             </div>
             
@@ -434,9 +493,11 @@ const Landing = () => {
                       <option value="team">Gia nhập NhiLe Team</option>
                     </select>
                   </div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button type="submit" className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-md">
                     Gửi thông tin
                   </Button>
+                  </motion.div>
                 </form>
               </div>
             ) : (
@@ -446,12 +507,14 @@ const Landing = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Đăng ký thành công!</h3>
                 <p className="mt-2 text-gray-600">Cảm ơn bạn đã quan tâm. Chúng tôi sẽ sớm liên hệ với bạn qua email.</p>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   onClick={handleSuccessClose}
                   className="mt-6 w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Đóng
                 </Button>
+                </motion.div>
               </div>
             )}
           </div>
