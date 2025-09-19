@@ -420,10 +420,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-200">Kết Nối Với Chúng Tôi</h4>
               <div className="mt-4 flex space-x-4">
-                <a href="https://www.facebook.com/NhiLeTeam?locale=vi_VN" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://www.facebook.com/NhiLeTeam?locale=vi_VN" className="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                   <Facebook size={24} />
                 </a>
-                <a href="" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/company/nhile-team/" className="text-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                   <Linkedin size={24} />
                 </a>
               </div>
