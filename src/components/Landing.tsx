@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, Target, Shield, Check, Calendar, BookOpen, Users, Menu, X, Bell, Facebook, Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -29,7 +31,7 @@ const Landing = () => {
     setFormData({ name: '', email: '', interest: 'general' });
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log('Form data:', formData);
     setIsFormSubmitted(true);
@@ -43,7 +45,7 @@ const Landing = () => {
     }, 500);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -54,40 +56,44 @@ const Landing = () => {
     <div className="bg-gray-50 text-gray-800 scroll-smooth">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <a href="#" className="text-2xl font-bold text-gray-900">
             N ơi<span className="text-primary">!</span>
           </a>
-          <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#mission" className="text-gray-600 hover:text-primary transition-colors">Sứ Mệnh</a>
-            <a href="#community" className="text-gray-600 hover:text-primary transition-colors">Cộng Đồng</a>
-            <a href="#nam" className="text-gray-600 hover:text-primary transition-colors">NAM</a>
-            <a href="#events" className="text-gray-600 hover:text-primary transition-colors">Hoạt Động</a>
-            <Button 
-              onClick={openJoinModal} 
-              className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition-transform hover:scale-105 shadow-md"
-            >
-              Gia Nhập Ngay
-            </Button>
+          <nav className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+            <Link to="mission" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Sứ Mệnh</Link>
+            <Link to="community" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Cộng Đồng</Link>
+            <Link to="nam" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">NAM</Link>
+            <Link to="events" smooth duration={600} offset={-80} className="text-gray-600 hover:text-primary transition-colors cursor-pointer">Hoạt Động</Link>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                onClick={openJoinModal} 
+                className="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary/90 transition-transform hover:scale-105 shadow-md"
+              >
+                Gia Nhập Ngay
+              </Button>
+            </motion.div>
           </nav>
-          <button className="md:hidden text-gray-700" onClick={toggleMobileMenu}>
+          <button className="md:hidden text-gray-700 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-        
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden px-6 pb-4">
-            <a href="#mission" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Sứ Mệnh</a>
-            <a href="#community" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Cộng Đồng</a>
-            <a href="#nam" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>NAM</a>
-            <a href="#events" className="block py-2 text-gray-600 hover:text-primary" onClick={() => setIsMobileMenuOpen(false)}>Hoạt Động</a>
-            <Button 
-              onClick={openJoinModal} 
-              className="block mt-4 w-full bg-primary text-white text-center px-5 py-2 rounded-lg hover:bg-primary/90 shadow-md"
-            >
-              Gia Nhập Ngay
-            </Button>
+          <div className="md:hidden px-4 pb-4 space-y-2">
+            <Link to="mission" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Sứ Mệnh</Link>
+            <Link to="community" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Cộng Đồng</Link>
+            <Link to="nam" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>NAM</Link>
+            <Link to="events" smooth duration={600} offset={-80} className="block py-2 text-gray-600 hover:text-primary cursor-pointer" onClick={() => setIsMobileMenuOpen(false)}>Hoạt Động</Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                onClick={openJoinModal} 
+                className="block mt-4 w-full bg-primary text-white text-center px-5 py-2 rounded-lg text-base font-semibold hover:bg-primary/90 shadow-md"
+              >
+                Gia Nhập Ngay
+              </Button>
+            </motion.div>
           </div>
         )}
       </header>
@@ -95,10 +101,15 @@ const Landing = () => {
       {/* Main Content */}
       <main>
         {/* Hero Section */}
-        <section className="relative pt-20 pb-24 md:pt-32 md:pb-36 text-center bg-white">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="relative pt-16 pb-20 md:pt-32 md:pb-36 text-center bg-white">
           <div className="absolute inset-0 bottom-1/4 bg-hero-gradient"></div>
-          <div className="container mx-auto px-6 relative">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+          <div className="container mx-auto px-4 sm:px-6 relative">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
               Hành trình đến <span className="text-primary">Vô Cực</span>.
               <br className="hidden md:block" />
               Bắt đầu từ đây.
@@ -107,30 +118,43 @@ const Landing = () => {
               Chào mừng bạn đến với N ơi! - Cộng đồng mở dành cho những người khao khát phát triển bản thân, kết nối và cống hiến dựa trên giá trị cốt lõi: Tâm - Tầm - Đức.
             </p>
             <div className="mt-10 flex justify-center gap-4 flex-wrap">
-              <Button 
-                onClick={openJoinModal}
-                className="bg-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-transform hover:scale-105 shadow-lg"
-              >
-                Tham Gia Cộng Đồng
-              </Button>
-              <Button 
-                variant="outline"
-                className="bg-white text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-transform hover:scale-105 shadow-lg border border-gray-300"
-              >
-                <a href="#mission">Tìm Hiểu Thêm</a>
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  onClick={openJoinModal}
+                  className="bg-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-transform hover:scale-105 shadow-lg"
+                >
+                  Tham Gia Cộng Đồng
+                </Button>
+              </motion.div>
+
+              <Link to="mission" smooth duration={600} offset={-80} className="cursor-pointer">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    variant="outline"
+                    className="bg-white text-gray-700 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-transform hover:scale-105 shadow-lg border border-gray-300"
+                  >
+                    Tìm Hiểu Thêm
+                  </Button>
+                </motion.div>
+              </Link>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Mission Section */}
-        <section id="mission" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-6">
+        <motion.section 
+          id="mission" 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-16 md:py-20 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Giá Trị Cốt Lõi</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
               Chúng tôi tin rằng sự phát triển bền vững bắt nguồn từ ba yếu tố không thể tách rời. Đây là kim chỉ nam cho mọi hoạt động của cộng đồng N.
             </p>
-            <div className="mt-16 grid md:grid-cols-3 gap-12 text-center">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
               {/* Tâm */}
               <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                 <div className="bg-red-100 text-red-600 rounded-full h-16 w-16 mx-auto flex items-center justify-center">
@@ -159,12 +183,18 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Community Section */}
-        <section id="community" className="py-20 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <motion.section 
+          id="community"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Một Cộng Đồng, Nhiều Hành Trình</h2>
                 <p className="mt-6 text-lg text-gray-600">
@@ -189,20 +219,26 @@ const Landing = () => {
                   </li>
                 </ul>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <img src="https://placehold.co/400x500/a78bfa/ffffff?text=Cộng+Đồng" alt="Hoạt động cộng đồng 1" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 object-cover w-full h-full" />
-                <img src="https://placehold.co/400x500/c4b5fd/ffffff?text=Gắn+Kết" alt="Hoạt động cộng đồng 2" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mt-8 object-cover w-full h-full" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <img src="https://placehold.co/400x500/a78bfa/ffffff?text=Cộng+Đồng" alt="Hoạt động cộng đồng 1" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 object-cover w-full h-auto max-w-full" />
+                <img src="https://placehold.co/400x500/c4b5fd/ffffff?text=Gắn+Kết" alt="Hoạt động cộng đồng 2" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mt-4 sm:mt-8 object-cover w-full h-auto max-w-full" />
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* NAM Section */}
-        <section id="nam" className="py-20 bg-gray-800 text-white">
-          <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <motion.section 
+          id="nam"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-16 md:py-20 bg-gray-800 text-white">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="order-2 lg:order-1">
-                <img src="https://placehold.co/600x450/374151/ffffff?text=NAM+Community" alt="Cộng đồng NAM" className="rounded-xl shadow-2xl" />
+                <img src="https://placehold.co/600x450/374151/ffffff?text=NAM+Community" alt="Cộng đồng NAM" className="rounded-xl shadow-2xl object-cover w-full h-auto max-w-full" />
               </div>
               <div className="order-1 lg:order-2">
                 <span className="text-blue-400 font-semibold">DÀNH CHO PHÁI MẠNH</span>
@@ -211,26 +247,38 @@ const Landing = () => {
                   Một không gian riêng, mạnh mẽ và hỗ trợ dành cho đàn ông Việt Nam trên hành trình khẳng định bản lĩnh, sống có trách nhiệm và trở thành trụ cột vững chắc cho gia đình và xã hội.
                 </p>
                 <div className="mt-8">
-                  <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
-                    Khám Phá NAM
-                  </Button>
+                  <a 
+                 href="https://www.facebook.com/nam.nhileteam?locale=vi_VN" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+               >
+                 <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
+                   Khám Phá NAM
+                 </Button>
+               </a>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Events Section */}
-        <section id="events" className="py-20 bg-gray-50">
-          <div className="container mx-auto px-6">
+        <motion.section 
+          id="events"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-16 md:py-20 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Hoạt Động & Sự Kiện</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
               Chúng tôi tin vào sức mạnh của hành động. Cộng đồng N thường xuyên tổ chức các hoạt động đa dạng để cùng nhau học hỏi, kết nối và phụng sự.
             </p>
-            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Workshop */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/818cf8/ffffff?text=Workshop" alt="Workshop" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="https://placehold.co/600x400/818cf8/ffffff?text=Workshop" alt="Workshop" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Workshop Phát Triển Bản Thân</h3>
                   <p className="mt-3 text-gray-600">Các buổi chia sẻ chuyên sâu hàng tháng về kỹ năng, tư duy và trí tuệ cảm xúc.</p>
@@ -240,7 +288,7 @@ const Landing = () => {
               
               {/* Offline Meetup */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/a5b4fc/ffffff?text=Offline" alt="Offline" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="https://placehold.co/600x400/a5b4fc/ffffff?text=Offline" alt="Offline" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Buổi Gặp Gỡ Offline</h3>
                   <p className="mt-3 text-gray-600">Cơ hội để các thành viên gặp gỡ, giao lưu và xây dựng mối quan hệ chân thành ngoài đời thực.</p>
@@ -250,7 +298,7 @@ const Landing = () => {
               
               {/* Charity */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/c7d2fe/ffffff?text=Thiện+Nguyện" alt="Thiện nguyện" className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img src="https://placehold.co/600x400/c7d2fe/ffffff?text=Thiện+Nguyện" alt="Thiện nguyện" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Dự Án Thiện Nguyện</h3>
                   <p className="mt-3 text-gray-600">Cùng nhau lan tỏa lòng tốt, thực hiện các dự án ý nghĩa để giúp đỡ những hoàn cảnh khó khăn.</p>
@@ -259,34 +307,46 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Final CTA */}
-        <section className="bg-primary">
-          <div className="container mx-auto px-6 py-20 text-center">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="bg-primary">
+          <div className="container mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Sẵn sàng để bắt đầu hành trình của bạn?</h2>
             <p className="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">
               Hãy trở thành một phần của cộng đồng N, nơi bạn được là chính mình, được học hỏi và được cống hiến.
             </p>
             <div className="mt-8">
-              <Button 
-                onClick={openJoinModal}
-                className="bg-white text-primary px-10 py-4 rounded-lg text-xl font-bold hover:bg-blue-50 transition-transform hover:scale-105 shadow-2xl"
-              >
-                Gia Nhập N Ngay!
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  onClick={openJoinModal}
+                  className="bg-white text-primary px-10 py-4 rounded-lg text-xl font-bold hover:bg-blue-50 transition-transform hover:scale-105 shadow-2xl"
+                >
+                  Gia Nhập N Ngay!
+                </Button>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Connect Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6">
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center">Kết Nối & Đồng Hành</h2>
             <p className="mt-4 text-lg text-gray-600 text-center max-w-3xl mx-auto">
               Chọn con đường phù hợp với bạn để gắn kết sâu hơn với cộng đồng và tiếp tục hành trình phát triển không ngừng.
             </p>
-            <div className="mt-16 grid md:grid-cols-3 gap-8">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {/* Update Events */}
               <div className="bg-gray-50 p-8 rounded-xl border border-gray-200 hover:shadow-lg hover:border-primary/30 transition-all duration-300 flex flex-col">
                 <div className="flex-shrink-0">
@@ -294,7 +354,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Cập nhật sự kiện của N ơi!</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Tham gia nhóm chung để nhận thông báo mới nhất về các workshop, buổi offline và hoạt động cộng đồng.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/home#register-form" className="mt-6 inline-block text-primary font-semibold group">
                   Tham gia ngay
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -307,7 +367,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Tham gia các lớp học N-edu</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Khám phá các khóa học độc quyền được thiết kế để giúp bạn phát triển toàn diện về tư duy, kỹ năng và nội tâm.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nedu.nhi.sg/program/" className="mt-6 inline-block text-primary font-semibold group">
                   Khám phá khóa học
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -320,19 +380,19 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Gia nhập NhiLe Team</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Cùng chúng tôi xây dựng và lan tỏa những giá trị tích cực. Khám phá các cơ hội để cống hiến tài năng của bạn.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/" className="mt-6 inline-block text-primary font-semibold group">
                   Xem vị trí tuyển dụng
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-800 text-white">
-        <div className="container mx-auto px-6 py-12">
+        <div className="container mx-auto px-4 sm:px-6 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             {/* About */}
             <div>
@@ -344,10 +404,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-200">Khám Phá</h4>
               <ul className="mt-4 space-y-2">
-                <li><a href="#mission" className="text-gray-400 hover:text-white transition-colors">Sứ Mệnh</a></li>
-                <li><a href="#community" className="text-gray-400 hover:text-white transition-colors">Về Cộng Đồng</a></li>
-                <li><a href="#nam" className="text-gray-400 hover:text-white transition-colors">Cộng Đồng NAM</a></li>
-                <li><a href="#events" className="text-gray-400 hover:text-white transition-colors">Sự Kiện</a></li>
+                <li><Link to="mission" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Sứ Mệnh</Link></li>
+                <li><Link to="community" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Về Cộng Đồng</Link></li>
+                <li><Link to="nam" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Cộng Đồng NAM</Link></li>
+                <li><Link to="events" smooth duration={600} offset={-80} className="text-gray-400 hover:text-white transition-colors cursor-pointer">Sự Kiện</Link></li>
               </ul>
             </div>
             
@@ -355,13 +415,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-200">Kết Nối Với Chúng Tôi</h4>
               <div className="mt-4 flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://www.facebook.com/NhiLeTeam?locale=vi_VN" className="text-gray-400 hover:text-white transition-colors">
                   <Facebook size={24} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Github size={24} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fnhile-team%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExNTg3QlV3dGVtY0FxVFJjSgEeS00ogjnPqggDiqgU6G8iZqYz5LvX8kMTyhUs9Dz26fBi0Ib4S16jQqD6s2M_aem_7DUhoQ_ByTCzX5TK5jclzg&h=AT1wFGWrPr-JboXVjnjWqxA2nAc3lbaXP085Kb7-_5AlQOSzA-xrm802sZ0ks4mJ8qqTgoM5C_np5odZlFRysf2ZY2qV1QSp9lPrj7gByz6vwc0Ta3_GcQNdFuAdTbpWi0V1yT28jgWbVAbNI_HRUQ" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={24} />
                 </a>
               </div>
@@ -431,9 +488,11 @@ const Landing = () => {
                       <option value="team">Gia nhập NhiLe Team</option>
                     </select>
                   </div>
-                  <Button type="submit" className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-md">
-                    Gửi thông tin
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button type="submit" className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-md">
+                      Gửi thông tin
+                    </Button>
+                  </motion.div>
                 </form>
               </div>
             ) : (
@@ -443,12 +502,14 @@ const Landing = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Đăng ký thành công!</h3>
                 <p className="mt-2 text-gray-600">Cảm ơn bạn đã quan tâm. Chúng tôi sẽ sớm liên hệ với bạn qua email.</p>
-                <Button 
-                  onClick={handleSuccessClose}
-                  className="mt-6 w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                >
-                  Đóng
-                </Button>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    onClick={handleSuccessClose}
+                    className="mt-6 w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                  >
+                    Đóng
+                  </Button>
+                </motion.div>
               </div>
             )}
           </div>

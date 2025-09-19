@@ -51,20 +51,20 @@ const Dashboard = () => {
 
   return (
     <div 
-      className="min-h-screen p-4 sm:p-6 lg:p-8 bg-gray-50"
+      className="min-h-screen p-2 sm:p-4 lg:p-8 bg-gray-50"
       style={{
         fontFamily: 'Inter, system-ui, sans-serif',
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale'
       }}
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto px-2 sm:px-4">
         {/* Header */}
-        <header className="flex justify-between items-center mb-8">
+  <header className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-8 gap-2 sm:gap-0">
           <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
             <span className="text-gray-500 font-bold">N</span>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <button className="relative">
               <Bell className="text-gray-500" size={24} />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -72,28 +72,28 @@ const Dashboard = () => {
             <img 
               src="https://placehold.co/40x40/E2E8F0/4A5568?text=AV" 
               alt="Avatar người dùng" 
-              className="w-10 h-10 rounded-full object-cover"
+              className="w-10 h-10 rounded-full object-cover max-w-full"
             />
           </div>
         </header>
 
         {/* Welcome Message */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">Chào mừng trở lại, An!</h1>
-          <p className="text-gray-500 mt-2">Hôm nay là một ngày tuyệt vời để phát triển bản thân.</p>
+        <div className="text-center mb-8 sm:mb-10">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Chào mừng trở lại, An!</h1>
+          <p className="text-gray-500 mt-2 text-base sm:text-lg">Hôm nay là một ngày tuyệt vời để phát triển bản thân.</p>
           <Button 
             onClick={openOnboarding}
-            className="mt-4 bg-blue-600 text-white font-semibold rounded-full px-6 py-3 hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg"
+            className="mt-4 bg-blue-600 text-white font-semibold rounded-full px-4 sm:px-6 py-2 sm:py-3 hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg"
           >
             Hôm nay tôi muốn ...
           </Button>
         </div>
 
         {/* Widgets Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {/* Today's Message */}
-          <div 
-            className="p-6 rounded-2xl md:col-span-2 shadow-sm border border-white/30"
+            <div 
+              className="p-4 sm:p-6 rounded-2xl md:col-span-2 shadow-sm border border-white/30"
             style={{
               background: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(20px)',
@@ -105,8 +105,8 @@ const Dashboard = () => {
           </div>
 
           {/* Personal Roadmap */}
-          <div 
-            className="p-6 rounded-2xl shadow-sm border border-white/30"
+            <div 
+              className="p-4 sm:p-6 rounded-2xl shadow-sm border border-white/30"
             style={{
               background: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(20px)',
@@ -114,21 +114,21 @@ const Dashboard = () => {
             }}
           >
             <h2 className="font-bold text-xl text-gray-900 mb-4">Lộ Trình Dành Riêng Cho Bạn</h2>
-            <ul className="space-y-4">
+            <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-4">
+                <div className="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-2 sm:mr-4">
                   <Check size={20} />
                 </div>
                 <span className="text-gray-700">Video: Khám phá điểm mạnh qua Thần số học</span>
               </li>
               <li className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4">
+                <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-2 sm:mr-4">
                   <Info size={20} />
                 </div>
                 <span className="text-gray-700">Bài viết: 5 Lỗi Giao Tiếp Cần Tránh</span>
               </li>
               <li className="flex items-center">
-                <div className="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mr-4">
+                <div className="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mr-2 sm:mr-4">
                   <TrendingUp size={20} />
                 </div>
                 <span className="text-gray-700">Gợi ý: Khóa học Xây Dựng Thương Hiệu</span>
@@ -137,8 +137,8 @@ const Dashboard = () => {
           </div>
 
           {/* Community Connections */}
-          <div 
-            className="p-6 rounded-2xl shadow-sm border border-white/30"
+            <div 
+              className="p-4 sm:p-6 rounded-2xl shadow-sm border border-white/30"
             style={{
               background: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(20px)',
@@ -146,13 +146,13 @@ const Dashboard = () => {
             }}
           >
             <h2 className="font-bold text-xl text-gray-900 mb-4">Kết Nối Đồng Điệu</h2>
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <div className="flex items-center justify-between p-2 rounded-lg hover:bg-white/50 transition-colors">
                 <div className="flex items-center">
                   <img 
                     src="https://placehold.co/40x40/A78BFA/FFFFFF?text=T" 
                     alt="Avatar" 
-                    className="w-10 h-10 rounded-full mr-3"
+                    className="w-10 h-10 rounded-full mr-2 sm:mr-3 max-w-full"
                   />
                   <div>
                     <p className="font-semibold text-gray-800">Minh Thư</p>
@@ -173,7 +173,7 @@ const Dashboard = () => {
                   <img 
                     src="https://placehold.co/40x40/FBBF24/FFFFFF?text=Q" 
                     alt="Avatar" 
-                    className="w-10 h-10 rounded-full mr-3"
+                    className="w-10 h-10 rounded-full mr-2 sm:mr-3 max-w-full"
                   />
                   <div>
                     <p className="font-semibold text-gray-800">Bảo Quyên</p>
