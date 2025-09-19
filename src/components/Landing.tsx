@@ -248,14 +248,14 @@ const Landing = () => {
                 </p>
                 <div className="mt-8">
                   <a 
-                    href="https://www.facebook.com/nam.nhileteam?locale=vi_VN" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
-                      Khám Phá NAM
-                    </Button>
-                  </a>
+                 href="https://www.facebook.com/nam.nhileteam?locale=vi_VN" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+               >
+                 <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
+                   Khám Phá NAM
+                 </Button>
+               </a>
                 </div>
               </div>
             </div>
@@ -418,7 +418,7 @@ const Landing = () => {
                 <a href="https://www.facebook.com/NhiLeTeam?locale=vi_VN" className="text-gray-400 hover:text-white transition-colors">
                   <Facebook size={24} />
                 </a>
-                <a href="" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fnhile-team%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExNTg3QlV3dGVtY0FxVFJjSgEeS00ogjnPqggDiqgU6G8iZqYz5LvX8kMTyhUs9Dz26fBi0Ib4S16jQqD6s2M_aem_7DUhoQ_ByTCzX5TK5jclzg&h=AT1wFGWrPr-JboXVjnjWqxA2nAc3lbaXP085Kb7-_5AlQOSzA-xrm802sZ0ks4mJ8qqTgoM5C_np5odZlFRysf2ZY2qV1QSp9lPrj7gByz6vwc0Ta3_GcQNdFuAdTbpWi0V1yT28jgWbVAbNI_HRUQ" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={24} />
                 </a>
               </div>
