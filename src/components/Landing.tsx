@@ -252,11 +252,15 @@ const Landing = () => {
                   Một không gian riêng, mạnh mẽ và hỗ trợ dành cho đàn ông Việt Nam trên hành trình khẳng định bản lĩnh, sống có trách nhiệm và trở thành trụ cột vững chắc cho gia đình và xã hội.
                 </p>
                 <div className="mt-8">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
-                    Khám Phá NAM
-                  </Button>
-                  </motion.div>
+                  <a 
+                 href="https://www.facebook.com/nam.nhileteam?locale=vi_VN" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+               >
+                 <Button className="bg-white text-gray-800 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200 transition-transform hover:scale-105 shadow-lg">
+                   Khám Phá NAM
+                 </Button>
+               </a>
                 </div>
               </div>
             </div>
@@ -355,7 +359,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Cập nhật sự kiện của N ơi!</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Tham gia nhóm chung để nhận thông báo mới nhất về các workshop, buổi offline và hoạt động cộng đồng.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/home#register-form" className="mt-6 inline-block text-primary font-semibold group">
                   Tham gia ngay
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -368,7 +372,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Tham gia các lớp học N-edu</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Khám phá các khóa học độc quyền được thiết kế để giúp bạn phát triển toàn diện về tư duy, kỹ năng và nội tâm.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nedu.nhi.sg/program/" className="mt-6 inline-block text-primary font-semibold group">
                   Khám phá khóa học
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -381,7 +385,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Gia nhập NhiLe Team</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Cùng chúng tôi xây dựng và lan tỏa những giá trị tích cực. Khám phá các cơ hội để cống hiến tài năng của bạn.</p>
-                <a href="#" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/" className="mt-6 inline-block text-primary font-semibold group">
                   Xem vị trí tuyển dụng
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -416,13 +420,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold text-gray-200">Kết Nối Với Chúng Tôi</h4>
               <div className="mt-4 flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://www.facebook.com/NhiLeTeam?locale=vi_VN" className="text-gray-400 hover:text-white transition-colors">
                   <Facebook size={24} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <Github size={24} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a href="" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={24} />
                 </a>
               </div>
