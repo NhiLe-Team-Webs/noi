@@ -354,7 +354,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Cập nhật sự kiện của N ơi!</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Tham gia nhóm chung để nhận thông báo mới nhất về các workshop, buổi offline và hoạt động cộng đồng.</p>
-                <a href="https://nlt.nhi.sg/home#register-form" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/home#register-form" className="mt-6 inline-block text-primary font-semibold group" target="_blank" rel="noopener noreferrer">
                   Tham gia ngay
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -367,7 +367,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Tham gia các lớp học N-edu</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Khám phá các khóa học độc quyền được thiết kế để giúp bạn phát triển toàn diện về tư duy, kỹ năng và nội tâm.</p>
-                <a href="https://nedu.nhi.sg/program/" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nedu.nhi.sg/program/" className="mt-6 inline-block text-primary font-semibold group" target="_blank" rel="noopener noreferrer">
                   Khám phá khóa học
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
@@ -380,7 +380,7 @@ const Landing = () => {
                 </div>
                 <h3 className="mt-4 text-xl font-bold text-gray-800">Gia nhập NhiLe Team</h3>
                 <p className="mt-2 text-gray-600 flex-grow">Cùng chúng tôi xây dựng và lan tỏa những giá trị tích cực. Khám phá các cơ hội để cống hiến tài năng của bạn.</p>
-                <a href="https://nlt.nhi.sg/" className="mt-6 inline-block text-primary font-semibold group">
+                <a href="https://nlt.nhi.sg/" className="mt-6 inline-block text-primary font-semibold group" target="_blank" rel="noopener noreferrer">
                   Xem vị trí tuyển dụng
                   <span className="inline-block transform group-hover:translate-x-1 transition-transform"> →</span>
                 </a>
