@@ -5,16 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 
+import JoinModal from '@/components/JoinModal';
+
 const Landing = () => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    interest: 'general'
-  });
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -22,19 +18,10 @@ const Landing = () => {
 
   const openJoinModal = () => {
     setIsJoinModalOpen(true);
-    setIsFormSubmitted(false);
   };
 
   const closeJoinModal = () => {
     setIsJoinModalOpen(false);
-    setIsFormSubmitted(false);
-    setFormData({ name: '', email: '', interest: 'general' });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
-    setIsFormSubmitted(true);
   };
 
   const handleSuccessClose = () => {
@@ -43,13 +30,6 @@ const Landing = () => {
     setTimeout(() => {
       navigate('/dashboard');
     }, 500);
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
   };
 
   return (
@@ -433,88 +413,11 @@ const Landing = () => {
 
       {/* Join Modal */}
       {isJoinModalOpen && (
-        <div 
-          className="fixed inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center z-50 transition-opacity duration-300 p-4"
-          onClick={(e) => e.target === e.currentTarget && closeJoinModal()}
-        >
-          <div className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform duration-300 scale-100">
-            {!isFormSubmitted ? (
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <h2 className="text-2xl font-bold text-gray-800">Gia nhập Cộng đồng N ơi!</h2>
-                  <button onClick={closeJoinModal} className="text-gray-400 hover:text-gray-800 transition-colors">
-                    <X size={24} />
-                  </button>
-                </div>
-                <p className="text-gray-600 mb-6">Để lại thông tin để chúng tôi có thể kết nối và gửi bạn những cập nhật mới nhất từ cộng đồng.</p>
-                <form onSubmit={handleFormSubmit}>
-                  <div className="mb-4">
-                    <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Tên của bạn</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      name="name" 
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
-                      placeholder="Nguyễn Văn A" 
-                      required 
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      name="email" 
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" 
-                      placeholder="bancuatui@email.com" 
-                      required 
-                    />
-                  </div>
-                  <div className="mb-6">
-                    <label htmlFor="interest" className="block text-gray-700 font-semibold mb-2">Bạn quan tâm đến</label>
-                    <select 
-                      id="interest" 
-                      name="interest" 
-                      value={formData.interest}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary appearance-none"
-                    >
-                      <option value="general">Cập nhật chung từ N ơi!</option>
-                      <option value="nam">Cộng đồng NAM</option>
-                      <option value="n-edu">Các lớp học N-edu</option>
-                      <option value="team">Gia nhập NhiLe Team</option>
-                    </select>
-                  </div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button type="submit" className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors shadow-md">
-                      Gửi thông tin
-                    </Button>
-                  </motion.div>
-                </form>
-              </div>
-            ) : (
-              <div className="text-center">
-                <div className="mx-auto h-16 w-16 text-green-500 mb-4">
-                  <Check size={64} className="mx-auto" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Đăng ký thành công!</h3>
-                <p className="mt-2 text-gray-600">Cảm ơn bạn đã quan tâm. Chúng tôi sẽ sớm liên hệ với bạn qua email.</p>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button 
-                    onClick={handleSuccessClose}
-                    className="mt-6 w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-                  >
-                    Đóng
-                  </Button>
-                </motion.div>
-              </div>
-            )}
-          </div>
-        </div>
+        <JoinModal
+          isOpen={isJoinModalOpen}
+          onClose={closeJoinModal}
+          onSuccess={handleSuccessClose}
+        />
       )}
     </div>
   );
