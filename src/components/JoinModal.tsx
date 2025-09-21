@@ -110,9 +110,9 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
           <X size={20} />
         </button>
 
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto" style={{ scrollbarGutter: 'stable both-edges' }}>
           {!isSubmitted ? (
-            <div className="bg-zinc-50 text-zinc-800 min-h-full">
+            <div className="bg-zinc-50 text-zinc-800 min-h-full pb-6">
             <div className="px-6 py-10 sm:px-10 sm:py-12">
               <header className="mb-10 text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-zinc-900">
@@ -147,7 +147,7 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                   </span>
                   <div className="space-y-2.5">
                     {watchDurationOptions.map((option) => (
-                      <label key={option.value} className="flex cursor-pointer">
+                      <label key={option.value} className="relative flex cursor-pointer">
                         <input
                           type="radio"
                           name="watch_duration"
@@ -156,9 +156,9 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                           onChange={handleInputChange}
                           className="peer sr-only"
                         />
-                        <span className="flex w-full items-center rounded-lg border border-zinc-200 p-3.5 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50">
-                          <span className="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-2 border-zinc-300 transition-all peer-checked:border-blue-600 peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
-                            <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200 peer-checked:scale-100" />
+                        <span className="flex w-full items-center rounded-lg border border-zinc-200 p-3.5 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:[&>span:first-child]:border-blue-600 peer-checked:[&>span:first-child>span]:scale-100 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
+                          <span className="mr-3 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-zinc-300 transition-all">
+                            <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200" />
                           </span>
                           <span className="text-zinc-700">{option.label}</span>
                         </span>
@@ -171,7 +171,7 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                   <span className="mb-3 block text-base font-medium text-zinc-700">2. Bạn thường xem trên nền tảng nào nhất?</span>
                   <div className="grid gap-2.5 sm:grid-cols-2">
                     {platformOptions.map((option) => (
-                      <label key={option.value} className="flex cursor-pointer">
+                      <label key={option.value} className="relative flex cursor-pointer">
                         <input
                           type="radio"
                           name="platform"
@@ -180,9 +180,9 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                           onChange={handleInputChange}
                           className="peer sr-only"
                         />
-                        <span className="flex w-full items-center rounded-lg border border-zinc-200 p-3.5 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50">
-                          <span className="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-2 border-zinc-300 transition-all peer-checked:border-blue-600 peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
-                            <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200 peer-checked:scale-100" />
+                        <span className="flex w-full items-center rounded-lg border border-zinc-200 p-3.5 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:[&>span:first-child]:border-blue-600 peer-checked:[&>span:first-child>span]:scale-100 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
+                          <span className="mr-3 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-zinc-300 transition-all">
+                            <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200" />
                           </span>
                           <span className="text-zinc-700">{option.label}</span>
                         </span>
@@ -226,7 +226,7 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                     <span className="mb-3 block text-base font-medium text-zinc-700">5. Tình trạng hôn nhân?</span>
                     <div className="flex flex-wrap gap-4">
                       {maritalStatusOptions.map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center">
+                        <label key={option.value} className="relative flex cursor-pointer items-center">
                           <input
                             type="radio"
                             name="marital_status"
@@ -235,9 +235,9 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                             onChange={handleInputChange}
                             className="peer sr-only"
                           />
-                          <span className="flex items-center rounded-lg border border-zinc-200 px-3.5 py-2 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50">
-                            <span className="mr-2 flex h-5 w-5 items-center justify-center rounded-full border-2 border-zinc-300 transition-all peer-checked:border-blue-600 peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
-                              <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200 peer-checked:scale-100" />
+                          <span className="flex items-center rounded-lg border border-zinc-200 px-3.5 py-2 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:[&>span:first-child]:border-blue-600 peer-checked:[&>span:first-child>span]:scale-100 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
+                            <span className="mr-2 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-zinc-300 transition-all">
+                              <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200" />
                             </span>
                             <span className="text-zinc-700">{option.label}</span>
                           </span>
@@ -250,7 +250,7 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                     <span className="mb-3 block text-base font-medium text-zinc-700">6. Giới tính của bạn?</span>
                     <div className="flex flex-wrap gap-4">
                       {genderOptions.map((option) => (
-                        <label key={option.value} className="flex cursor-pointer items-center">
+                        <label key={option.value} className="relative flex cursor-pointer items-center">
                           <input
                             type="radio"
                             name="gender"
@@ -259,9 +259,9 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                             onChange={handleInputChange}
                             className="peer sr-only"
                           />
-                          <span className="flex items-center rounded-lg border border-zinc-200 px-3.5 py-2 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50">
-                            <span className="mr-2 flex h-5 w-5 items-center justify-center rounded-full border-2 border-zinc-300 transition-all peer-checked:border-blue-600 peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
-                              <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200 peer-checked:scale-100" />
+                          <span className="flex items-center rounded-lg border border-zinc-200 px-3.5 py-2 transition-colors hover:bg-zinc-50 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:[&>span:first-child]:border-blue-600 peer-checked:[&>span:first-child>span]:scale-100 peer-focus-visible:outline-none peer-focus-visible:ring-4 peer-focus-visible:ring-blue-500/20">
+                            <span className="mr-2 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-zinc-300 transition-all">
+                              <span className="h-2.5 w-2.5 scale-0 transform rounded-full bg-blue-600 transition-transform duration-200" />
                             </span>
                             <span className="text-zinc-700">{option.label}</span>
                           </span>
