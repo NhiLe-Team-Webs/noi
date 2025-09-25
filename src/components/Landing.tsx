@@ -200,8 +200,16 @@ const Landing = () => {
                 </ul>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <img src="https://placehold.co/400x500/a78bfa/ffffff?text=Cộng+Đồng" alt="Hoạt động cộng đồng 1" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 object-cover w-full h-auto max-w-full" />
-                <img src="https://placehold.co/400x500/c4b5fd/ffffff?text=Gắn+Kết" alt="Hoạt động cộng đồng 2" className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mt-4 sm:mt-8 object-cover w-full h-auto max-w-full" />
+                
+                <img src="/image/Nbonding.jpg" 
+                alt="Hoạt động cộng đồng 1" 
+                className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 object-cover w-full h-auto max-w-full" 
+                />
+                
+                <img src="/image/ganket.jpg" 
+                alt="Hoạt động cộng đồng 2" 
+                className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 mt-4 sm:mt-8 object-cover w-full h-auto max-w-full" 
+                />
               </div>
             </div>
           </div>
@@ -218,7 +226,7 @@ const Landing = () => {
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div className="order-2 lg:order-1">
-                <img src="https://placehold.co/600x450/374151/ffffff?text=NAM+Community" alt="Cộng đồng NAM" className="rounded-xl shadow-2xl object-cover w-full h-auto max-w-full" />
+                <img src="/image/nam1.jpg" alt="Cộng đồng NAM" className="rounded-xl shadow-2xl object-cover w-full h-auto max-w-full" />
               </div>
               <div className="order-1 lg:order-2">
                 <span className="text-blue-400 font-semibold">DÀNH CHO PHÁI MẠNH</span>
@@ -228,7 +236,7 @@ const Landing = () => {
                 </p>
                 <div className="mt-8">
                   <a 
-                 href="https://www.facebook.com/nam.nhileteam?locale=vi_VN" 
+                 href="https://nam.nhi.sg/" 
                  target="_blank" 
                  rel="noopener noreferrer"
                >
@@ -258,31 +266,31 @@ const Landing = () => {
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Workshop */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/818cf8/ffffff?text=Workshop" alt="Workshop" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
+                <img src="/image/workshop2.jpg" alt="Workshop" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Workshop Phát Triển Bản Thân</h3>
                   <p className="mt-3 text-gray-600">Các buổi chia sẻ chuyên sâu hàng tháng về kỹ năng, tư duy và trí tuệ cảm xúc.</p>
-                  <a href="#" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
+                  <a href="https://nlt.nhi.sg/achievements/online-meetings" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
                 </div>
               </div>
               
               {/* Offline Meetup */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/a5b4fc/ffffff?text=Offline" alt="Offline" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
+                <img src="/image/ganket1.jpg" alt="Offline" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Buổi Gặp Gỡ Offline</h3>
                   <p className="mt-3 text-gray-600">Cơ hội để các thành viên gặp gỡ, giao lưu và xây dựng mối quan hệ chân thành ngoài đời thực.</p>
-                  <a href="#" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
+                  <a href="https://nlt.nhi.sg/achievements/team-building" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
                 </div>
               </div>
               
               {/* Charity */}
               <div className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <img src="https://placehold.co/600x400/c7d2fe/ffffff?text=Thiện+Nguyện" alt="Thiện nguyện" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
+                <img src="/image/thiennguyen.jpg" alt="Thiện nguyện" className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300 max-w-full" />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800">Dự Án Thiện Nguyện</h3>
                   <p className="mt-3 text-gray-600">Cùng nhau lan tỏa lòng tốt, thực hiện các dự án ý nghĩa để giúp đỡ những hoàn cảnh khó khăn.</p>
-                  <a href="#" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
+                  <a href="https://www.nlf.sg/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-primary font-semibold hover:text-primary/80">Xem chi tiết →</a>
                 </div>
               </div>
             </div>
