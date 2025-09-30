@@ -248,7 +248,49 @@ const Landing = () => {
               </div>
             </div>
           </div>
-        </motion.section>
+
+           {/* === THÊM SECTION 3 ẢNH 1 DÒNG === */}
+<div className="mt-14 container mx-auto px-4 sm:px-6"> {/* ← THÊM DÒNG NÀY */}
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div className="group overflow-hidden rounded-xl shadow-lg max-w-sm">
+        <img 
+          src="/image/nam2.jpg" 
+          alt="Đào tạo kỹ năng cho đàn ông Việt Nam" 
+          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="p-4 bg-gray-900/80 text-white">
+          <h3 className="text-lg font-semibold">Rèn Luyện Bản Lĩnh</h3>
+          <p className="mt-1 text-sm text-gray-300">Các buổi tập luyện thể chất và tinh thần giúp đàn ông Việt Nam mạnh mẽ hơn mỗi ngày.</p>
+        </div>
+      </div>
+
+      <div className="group overflow-hidden rounded-xl shadow-lg max-w-sm">
+        <img 
+          src="/image/nam.jpg" 
+          alt="Gặp gỡ anh em trong cộng đồng NAM" 
+          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="p-4 bg-gray-900/40 text-white">
+          <h3 className="text-lg font-semibold">Gặp Gỡ Anh Em</h3>
+          <p className="mt-2 text-sm text-gray-300">Không gian kết nối chân thành, nơi bạn tìm thấy những người đồng điệu và cùng nhau tiến bước.</p>
+        </div>
+      </div>
+
+      <div className="group overflow-hidden rounded-xl shadow-lg max-w-sm">
+        <img 
+          src="/image/nam3.jpg" 
+          alt="Hoạt động ngoài trời cùng cộng đồng NAM" 
+          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="p-4 bg-gray-900/40 text-white">
+          <h3 className="text-lg font-semibold">Cùng đồng hành phát triển</h3>
+          <p className="mt-2 text-sm text-gray-300">Cùng nhau chinh phục thử thách, rèn luyện sức khỏe và xây dựng tinh thần đồng đội.</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+</motion.section>
 
         {/* Events Section */}
         <motion.section 
