@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { sendTelegramNotification } from '@/lib/telegram';
+import { saveJoinRequest } from '@/lib/supabase';
 
 type JoinModalProps = {
   isOpen: boolean;
@@ -83,6 +84,14 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
     } catch (error) {
       console.error('Failed to send Telegram notification:', error);
       // Optionally handle error (e.g., show a toast), but we still show success for now to not block user
+    }
+
+    // Save to Supabase
+    try {
+      await saveJoinRequest(formData);
+      console.log('Join request saved to Supabase');
+    } catch (error) {
+      console.error('Failed to save to Supabase:', error);
     }
 
     setIsSubmitted(true);
