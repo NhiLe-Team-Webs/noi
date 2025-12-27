@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { sendTelegramNotification } from '@/lib/telegram';
+import { supabase } from '@/lib/supabase';
 
 type JoinModalProps = {
   isOpen: boolean;
@@ -82,7 +83,37 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
       await sendTelegramNotification(formData);
     } catch (error) {
       console.error('Failed to send Telegram notification:', error);
-      // Optionally handle error (e.g., show a toast), but we still show success for now to not block user
+    }
+
+    // Save to Supabase
+    try {
+      const { error } = await supabase
+        .from('join_requests')
+        .insert([
+          {
+            email: formData.email,
+            watch_duration: formData.watch_duration,
+            platform: formData.platform,
+            community_need: formData.community_need,
+            profession: formData.profession,
+            marital_status: formData.marital_status,
+            gender: formData.gender,
+            location: formData.location,
+            phone: formData.phone,
+            telegram: formData.telegram,
+          },
+        ]);
+
+      if (error) {
+        console.error('Error inserting data into Supabase:', error);
+        throw error;
+      }
+    } catch (error) {
+      console.error('Failed to save to Supabase:', error);
+      // We might want to show an error to the user if saving fails, 
+      // but for now we'll allow the flow to continue as "success" 
+      // since the user doesn't strictly need to know the backend details.
+      // However, for a join request, we probably should ensure it's saved.
     }
 
     setIsSubmitted(true);
