@@ -4,6 +4,7 @@ import { Check, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
+import { sendTelegramNotification } from '@/lib/telegram';
 
 type JoinModalProps = {
   isOpen: boolean;
@@ -65,7 +66,7 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
     return null;
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!formData.email.trim() || !/^\S+@\S+\.\S+$/.test(formData.email)) {
@@ -74,45 +75,17 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
     }
 
     setEmailError('');
-    setIsSubmitted(true);
+    console.log('Form data:', formData);
 
-    // Prepare message for Telegram
-    const message = `
-<b>🚀 Đăng ký thành viên mới!</b>
-
-<b>📧 Email:</b> ${formData.email}
-<b>⏱️ Thời gian xem:</b> ${watchDurationOptions.find(o => o.value === formData.watch_duration)?.label || formData.watch_duration}
-<b>📱 Nền tảng:</b> ${platformOptions.find(o => o.value === formData.platform)?.label || formData.platform}
-<b>💼 Nghề nghiệp:</b> ${formData.profession}
-<b>💍 Hôn nhân:</b> ${maritalStatusOptions.find(o => o.value === formData.marital_status)?.label || formData.marital_status}
-<b>⚧ Giới tính:</b> ${genderOptions.find(o => o.value === formData.gender)?.label || formData.gender}
-<b>📍 Địa điểm:</b> ${formData.location}
-<b>📞 SĐT:</b> ${formData.phone || 'Không có'}
-<b>✈️ Telegram:</b> ${formData.telegram || 'Không có'}
-
-<b>💭 Nhu cầu:</b>
-${formData.community_need}
-    `;
-
-    // Send to Telegram
-    const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-
-    if (botToken && chatId) {
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-          parse_mode: 'HTML',
-        }),
-      }).catch(err => console.error('Telegram Error:', err));
-    } else {
-      console.warn('Telegram credentials missing in .env');
+    // Send Telegram notification
+    try {
+      await sendTelegramNotification(formData);
+    } catch (error) {
+      console.error('Failed to send Telegram notification:', error);
+      // Optionally handle error (e.g., show a toast), but we still show success for now to not block user
     }
+
+    setIsSubmitted(true);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
