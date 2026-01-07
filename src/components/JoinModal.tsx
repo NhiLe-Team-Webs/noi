@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { Check, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { sendTelegramNotification } from '@/lib/telegram';
+import { saveJoinRequest } from '@/lib/supabase';
+import LocationSelector from '@/components/LocationSelector';
 
 type JoinModalProps = {
   isOpen: boolean;
@@ -82,8 +84,17 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
       await sendTelegramNotification(formData);
     } catch (error) {
       console.error('Failed to send Telegram notification:', error);
-      // Optionally handle error (e.g., show a toast), but we still show success for now to not block user
     }
+
+    // Save to Supabase
+    try {
+      await saveJoinRequest(formData);
+      console.log('Join request saved to Supabase');
+    } catch (error) {
+      console.error('Failed to save to Supabase:', error);
+    }
+
+
 
     setIsSubmitted(true);
   };
@@ -100,6 +111,13 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
       setEmailError('');
     }
   };
+
+  const handleLocationChange = useCallback((location: string) => {
+    setFormData((previous) => ({
+      ...previous,
+      location,
+    }));
+  }, []);
 
   const handleSuccess = () => {
     onSuccess();
@@ -282,17 +300,12 @@ const JoinModal = ({ isOpen, onClose, onSuccess }: JoinModalProps) => {
                   </div>
 
                   <div>
-                    <label htmlFor="location" className="mb-2 block text-base font-medium text-zinc-700">
+                    <label className="mb-2 block text-base font-medium text-zinc-700">
                       7. Bạn đang sinh sống ở đâu?
                     </label>
-                    <input
-                      type="text"
-                      id="location"
-                      name="location"
-                      placeholder="Ví dụ: Hà Nội, Việt Nam hoặc Paris, Pháp"
-                      value={formData.location}
-                      onChange={handleInputChange}
-                      className="w-full rounded-lg border border-zinc-200 bg-zinc-100/80 px-4 py-2.5 text-base text-zinc-800 transition duration-200 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-blue-500/20"
+                    <LocationSelector
+                      onLocationChange={handleLocationChange}
+                      defaultValue={formData.location}
                     />
                   </div>
 

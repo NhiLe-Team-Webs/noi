@@ -1,0 +1,39 @@
+base url: https://provinces.open-api.vn
+https://provinces.open-api.vn/api/v2/
+[
+  {
+    "code": 1,
+    "codename": "ha_noi",
+    "division_type": "thành phố trung ương",
+    "name": "Thành phố Hà Nội",
+    "phone_code": 24
+  }
+]
+https://provinces.open-api.vn/api/v2/p/
+[
+  {
+    "code": 1,
+    "codename": "ha_noi",
+    "division_type": "thành phố trung ương",
+    "name": "Thành phố Hà Nội",
+    "phone_code": 24
+  }
+]
+https://provinces.open-api.vn/api/v2/p/{code}
+{
+  "code": 1,
+  "codename": "ha_noi",
+  "division_type": "thành phố trung ương",
+  "name": "Thành phố Hà Nội",
+  "phone_code": 24
+}
+https://provinces.open-api.vn/api/v2/w/
+null
+https://provinces.open-api.vn/api/v2/w/{code}
+{
+  "code": 26560,
+  "codename": "phuong_ba_ria",
+  "division_type": "phường",
+  "name": "Phường Bà Rịa",
+  "province_code": 79
+}
